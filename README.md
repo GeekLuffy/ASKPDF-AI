@@ -13,14 +13,15 @@ ASKPDF-AI is an AI-powered multilingual question-answer generator from PDFs, des
 
 ## Technology Stack
 - **Programming Language:** Python
-- **Backend:** Flask/Django
+- **Backend:** Flask
 - **Frontend:** HTML, CSS, JavaScript
-- **Database:** PostgreSQL / Firebase
+- **Database:** SQLite3
 - **Libraries & Frameworks:**
-  - PDF Processing: PyMuPDF, PDFPlumber
-  - NLP Models: spaCy
-  - Question Generation: Custom AI-based rule engine
-  - Translation: Google Translate API, MarianMT
+  - PDF Processing: PyMuPDF
+  - IMAGE PROCESSING: PILLOW, tesseract
+  - NLP Models: GPT 3.5 turbo
+  - Question Generation: GPT 3.5 turbo
+  - Translation: Google Translate API, Translator library
   - OCR: pytesseract
   - Authentication: Werkzeug Security
 
