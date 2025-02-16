@@ -183,19 +183,19 @@
 
     <div class="container">
         <h2 class="mb-3">AskPDF AI</h2>
-        <p>AI PDF Summarizer can summarize long PDF documents in seconds. It can convert PDFs to text, allowing you to ask your PDF.</p>
+        <p>AI PDF Summarizer and Question/Answers Generator which can summarize long PDF documents in seconds also can create questions and answers. It can convert PDFs to text, allowing you to ask your PDF.</p>
 
         <form action="/upload" method="post" enctype="multipart/form-data">
             <div class="upload-box" id="drop-area">
                 <img src="https://cdn-icons-png.flaticon.com/512/1091/1091870.png" alt="Upload" width="50">
-                <p>Drag and drop a file to summarize</p>
+                <p>Drag and drop a file to create Q/A</p>
                 <p>or</p>
                 <button type="button" class="btn-upload" onclick="document.getElementById('file-input').click();">Choose a File</button>
                 <input type="file" id="file-input" name="file" class="file-input" required>
                 <p id="file-name" style="color: green; font-weight: bold;"></p>
             </div>
 
-            <button type="submit" class="btn-upload mt-3">Input & Summarize</button>
+            <button type="submit" class="btn-upload mt-3">Create QnA</button>
         </form>
 
         <div class="mt-3">
@@ -259,8 +259,8 @@
     </style>
 
     <div class="features-container">
-        <h2>How does AI PDF Summarizer work?</h2>
-        <p>The AI PDF Summarizer has great features:</p>
+        <h2>How does AskPDF AI work?</h2>
+        <p>The AskPDF has great features:</p>
         <div class="features-row">
             <div class="feature-box" onclick="window.location.href='/pdf-to-text'" title="Instantly extract text from PDFs">
                 <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" alt="PDF to Text">
