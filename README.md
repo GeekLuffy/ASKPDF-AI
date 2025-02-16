@@ -38,7 +38,7 @@ Ensure you have the following installed:
    git clone https://github.com/GeekLuffy/ASKPDF-AI.git
    cd ASKPDF-AI
    ```
-2. Create and activate a virtual environment (optional but recommended):
+2. Create and activate a virtual environment (optional ):
    ```sh
    python -m venv venv
    source venv/bin/activate  # For Mac/Linux
