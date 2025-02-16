@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert PDF to Text</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f7fb;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .btn-upload {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Convert PDF to Text</h2>
+        <p>Upload your PDF file, and we will extract the text for you.</p>
+        <input type="file" id="pdfFile" class="form-control" accept="application/pdf">
+        <button class="btn btn-primary btn-upload" onclick="convertPdfToText()">Convert</button>
+        <h4 class="mt-4">Extracted Text:</h4>
+        <pre id="output" style="text-align: left; white-space: pre-wrap;"></pre>
+    </div>
+
+    <script>
+    function convertPdfToText() {
+        const fileInput = document.getElementById('pdfFile');
+        const output = document.getElementById('output');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            alert('Please select a PDF file first.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        output.textContent = 'Extracting text...';
+
+        fetch('/extract-text', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.text) {
+                output.textContent = data.text;
+            } else {
+                output.textContent = 'Failed to extract text.';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            output.textContent = 'Error processing the PDF.';
+        });
+    }
+</script>
+
+</body>
+</html>

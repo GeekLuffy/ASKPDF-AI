@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Text & Questions</title>
+
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('fonts/Sura-Bold.ttf') format('truetype'),
+                 url('fonts/Sura-Bold.ttf') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'CustomFont', Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .pdf-preview {
+            flex: 1;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            padding-right: 20px;
+        }
+
+        .pdf-preview img {
+            width: 80px;
+            height: auto;
+        }
+
+        .summary {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .summary h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .scroll-box {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .questions {
+            padding: 10px 0;
+        }
+
+        .questions p {
+            margin: 5px 0;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background: #007bff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .back-link:hover {
+            background: #0056b3;
+        }
+
+        /* Language Selection */
+        .language-selection {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 7px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- PDF Preview Section -->
+        <div class="pdf-preview">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Icon">
+            <p><strong>Uploaded File:</strong> Problem Statement.pdf</p>
+            <p><strong>Size:</strong> 249.86 KB</p>
+        </div>
+
+        <!-- Summary & Questions Section -->
+        <div class="summary">
+
+            <!-- Language Selection & Translate Button for Summary -->
+            <div class="language-selection">
+                <label for="language">Select Language:</label>
+                <select id="language">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="zh">Chinese</option>
+                    <option value="ar">Arabic</option>
+                    <option value="ru">Russian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="tr">Turkish</option>
+                    <option value="ur">Urdu</option>
+                    <option value="bn">Bengali</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="mr">Marathi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="ne">Nepali</option>
+                    <option value="th">Thai</option>
+                    <option value="vi">Vietnamese</option>
+                    <option value="id">Indonesian</option>
+                </select>
+                <button onclick="translateSummary()">Translate</button>
+            </div>
+
+{#            <!-- Summary -->#}
+{#            <h2>Summary</h2>#}
+{#            <div class="scroll-box" id="summary">{{ summary }}</div>#}
+
+            <!-- Language Selection & Translate Button for Questions -->
+            <div class="language-selection">
+                <label for="language-questions">Select Language:</label>
+                <select id="language-questions">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="zh">Chinese</option>
+                    <option value="ar">Arabic</option>
+                    <option value="ru">Russian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="tr">Turkish</option>
+                    <option value="ur">Urdu</option>
+                    <option value="bn">Bengali</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="mr">Marathi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="ne">Nepali</option>
+                    <option value="th">Thai</option>
+                    <option value="vi">Vietnamese</option>
+                    <option value="id">Indonesian</option>
+                </select>
+                <button onclick="translateQuestions()">Translate</button>
+            </div>
+
+            <!-- Questions Section -->
+            <h2>Generated Questions</h2>
+            <div class="questions" id="questions">
+                {{ questions | safe }}
+            </div>
+
+            <!-- Upload Another File Button -->
+            <a href="/" class="back-link">Upload Another File</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for Translation -->
+    <script>
+        function translateSummary() {
+            let text = document.getElementById("summary").innerText;
+            let targetLang = document.getElementById("language").value;
+
+            fetch("/translate_summary", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ language: targetLang, summary: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.translated_summary) {
+                    document.getElementById("summary").innerText = data.translated_summary;
+                } else {
+                    alert("Translation failed!");
+                }
+            })
+            .catch(() => alert("Error in translation"));
+        }
+
+        function translateQuestions() {
+            let text = document.getElementById("questions").innerText;
+            let targetLang = document.getElementById("language-questions").value;
+
+            fetch("/translate_questions", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ language: targetLang, questions: text })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.translated_questions) {
+                    document.getElementById("questions").innerText = data.translated_questions;
+                } else {
+                    alert("Translation failed!");
+                }
+            })
+            .catch(() => alert("Error in translation"));
+        }
+    </script>
+
+</body>
+</html>

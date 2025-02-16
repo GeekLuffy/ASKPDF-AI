@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Download Your Summary</h2>
+        <p>Your AI-generated summary is ready to download.</p>
+
+        {% if summary_text %}
+            <textarea id="summaryText" rows="8" cols="80">{{ summary_text }}</textarea>
+            <br>
+            <button class="download-btn" onclick="downloadSummary()">Download Summary</button>
+        {% else %}
+            <p>No summary available.</p>
+        {% endif %}
+
+        <br><br>
+        <a href="/">Go Back</a>
+    </div>
+
+    <script>
+        function downloadSummary() {
+            const text = document.getElementById('summaryText').value;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'summary.txt';
+            a.click();
+        }
+    </script>
+</body>
+</html>
