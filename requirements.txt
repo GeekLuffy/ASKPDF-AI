@@ -1,0 +1,10 @@
+Flask
+markdown
+werkzeug
+PyMuPDF
+pytesseract
+requests
+Pillow
+sqlite3
+deep-translator
+translate
